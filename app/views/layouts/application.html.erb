@@ -22,6 +22,13 @@
         </div>
       </div>
     </header>
+    <div class="flash">  
+      <% if flash.present? %>
+        <% flash.each do |key,value| %>
+          <div class="<%= key %>"><%= value %></div>
+        <% end %>
+      <% end %>
+    </div>
     <%= yield %>
   </body>
 </html>
