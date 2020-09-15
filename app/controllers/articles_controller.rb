@@ -31,10 +31,15 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to article_path(@article),notice: "更新できました"
     else
-      flash.now[:error] ="更新に失敗しました"
+      flash.now[:error] = "更新に失敗しました"
       render :edit
     end
+  end
 
+  def destroy
+    article = Article.find(params[:id])
+    article.destroy!
+    redirect_to root_path, notice: "削除できました"
   end
 
   private
