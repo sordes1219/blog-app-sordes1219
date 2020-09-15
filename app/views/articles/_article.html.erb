@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="card_image">
+    <%= image_tag 'eyecatch1.png' %>
+  </div>
+  <div class="card_title">
+    <%= article.title %>
+  </div>
+  <div class="card_content">
+    <div class="card_heart">
+      <%= image_tag 'heart.svg' %>
+      <span>23</span>
+    </div>
+    <div class="card_detail">
+      <%= image_tag 'default-avatar.png' %>
+      <div>
+        <p>cohki0305</p>
+        <p><%= I18n.l(article.created_at,format: :default) %></p>
+      </div>
+    </div>
+  </div>
+</div>
