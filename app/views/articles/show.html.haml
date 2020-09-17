@@ -3,9 +3,10 @@
   .article_detail
     = image_tag 'default-avatar.png'
     %div
-      %p couki0305
+      - if @article.user.present?
+        %p= @article.user.display_name
       %p= I18n.l(@article.created_at,format: :default)
-    - if user_signed_in?
+    - if user_signed_in? && current_user.has_written?(@article)
       .article_detail_actions
         .dropdown
           = image_tag "actions.svg", class:"dropbtn"
