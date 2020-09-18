@@ -25,6 +25,7 @@ class Article < ApplicationRecord
   validate :validate_title_and_content_length
 
   belongs_to :user
+  has_many :comments, dependent: :destroy
 
   def author_name
     user.display_name

@@ -9,7 +9,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 john = User.find_by(email: 'john@sample.com')
-emily = User.create!(email: 'emily@sample.com', password: 'password')
+emily = User.find_by(email: 'emily@sample.com')
 
 5.times do
   john.articles.create([{ title: Faker::Lorem.sentence(word_count: 3), content: Faker::Lorem.sentence(word_count: 100) }])
