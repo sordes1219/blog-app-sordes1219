@@ -15,7 +15,12 @@
   .article_content
     = @article.content
   .article_heart
-    = image_tag 'heart.svg'
+    - if current_user.has_liked?(@article)
+      = link_to article_likes_path(@article), data: { method: "post"} do
+        = image_tag 'heart-active.svg'
+    - else
+      = link_to article_likes_path(@article), data: { method: "post"} do
+        = image_tag 'heart.svg'
 .article
   %h2
     コメント一覧
