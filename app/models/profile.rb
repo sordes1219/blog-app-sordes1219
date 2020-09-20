@@ -19,4 +19,17 @@
 class Profile < ApplicationRecord
   enum gender: { male: 0, female: 1, other: 2 }
   belongs_to :user
+  has_one_attached :avatar
+
+  def age
+    return '不明' unless birthday.present?
+
+    year = Time.zone.now.year - birthday.year
+    day = Time.zone.now.yday - birthday.yday
+    if day.negative?
+      "#{year - 1}歳"
+    else
+      "#{year}歳"
+    end
+  end
 end
