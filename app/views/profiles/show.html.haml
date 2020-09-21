@@ -5,7 +5,10 @@
     .profilePage_user_basicInfo
       .profilePage_user_name
         .profilePage_user_displayName
-          #{current_user.display_name}(#{current_user.age}/#{I18n.t("enum.genders.#{current_user.gender}")})
+          - if current_user.gender.present?
+            #{current_user.display_name}(#{current_user.age if current_user.age.present?}/#{I18n.t("enum.genders.#{current_user.gender if current_user.gender.present?}")})
+          - else
+            #{current_user.display_name}(#{current_user.age if current_user.age.present?})
         .profilePage_user_actionButton
           = link_to 'Edit', edit_profile_path
       .prifilePage_user_introduction
