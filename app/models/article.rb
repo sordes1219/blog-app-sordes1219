@@ -43,5 +43,4 @@ class Article < ApplicationRecord
     char_count = title.length + content.length
     errors.add(:content, '100文字以上にしてください') unless char_count > 100
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -35,7 +37,7 @@ class User < ApplicationRecord
 
   def has_liked?(article)
     likes.exists?(article_id: article.id)
-  end 
+  end
 
   def display_name
     profile&.nickname || email.split('@').first

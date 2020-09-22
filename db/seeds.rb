@@ -8,8 +8,8 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-john = User.create!(email: 'john@sample.com', password:'password')
-emily = User.create!(email: 'emily@sample.com', password:'password')
+john = User.create!(email: 'john@sample.com', password: 'password')
+emily = User.create!(email: 'emily@sample.com', password: 'password')
 
 5.times do
   john.articles.create([{ title: Faker::Lorem.sentence(word_count: 3), content: Faker::Lorem.sentence(word_count: 100) }])

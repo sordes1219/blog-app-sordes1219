@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   def new
     article = Article.find(params[:article_id])
@@ -13,7 +15,7 @@ class CommentsController < ApplicationController
     else
       flash.now[:error] = 'コメントを追加できませんでした'
       render :new
-     end
+    end
   end
 
   private
