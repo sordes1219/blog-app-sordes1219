@@ -28,6 +28,12 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :favorite_articles, through: :likes, source: :article
+  
+  has_many :following_relationships, foreign_key: :follower_id, class_name: 'Relationship', dependent: :destroy
+  has_many :followings, through: :following_relationships, source: :following 
+
+  has_many :follower_relationships, foreign_key: :following_id, class_name: 'Relationship', dependent: :destroy
+  has_many :followers, through: :follower_relationships, source: :follower
 
   delegate :birthday, :gender, :introduction, :age, to: :profile, allow_nil: true
 
@@ -52,6 +58,31 @@ class User < ApplicationRecord
       profile.avatar
     else
       'default-avatar.png'
+    end
+  end
+
+  def follow!(user)
+    user_id = get_user_id(user)
+    following_relationships.create!(following_id: user_id)
+  end
+
+  def unfollow!(user)
+    user_id = get_user_id(user)
+    following_relationship = following_relationships.find_by!(following_id: user_id)
+    following_relationship.destroy!
+  end
+
+  def has_followed?(user)
+    following_relationships.exists?(following_id: user.id)
+  end
+
+  private
+
+  def get_user_id(user)
+    if user.is_a?(User)
+      user.id
+    else
+      user
     end
   end
 end
