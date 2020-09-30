@@ -15,8 +15,8 @@
         - if !current_page?(root_path)
           = link_to :back do
             = image_tag 'back.svg'
-        %p.header_pageTitle
-          = link_to 'blogApp', root_path
+        %p
+          = link_to 'blogApp', root_path, class: 'header_pageTitle'
       - if user_signed_in?
         .dropdown
           = image_tag current_user.avatar_image, class: 'header_avatar dropbtn'

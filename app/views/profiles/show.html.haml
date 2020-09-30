@@ -1,19 +1,2 @@
-.container.profilePage
-  .profilePage_user
-    .profilePage_user_image
-      = image_tag current_user.avatar_image
-    .profilePage_user_basicInfo
-      .profilePage_user_name
-        .profilePage_user_displayName
-          - if current_user.gender.present?
-            #{current_user.display_name}(#{current_user.age if current_user.age.present?}/#{I18n.t("enum.genders.#{current_user.gender if current_user.gender.present?}")})
-          - else
-            #{current_user.display_name}(#{current_user.age if current_user.age.present?})
-        .profilePage_user_actionButton
-          = link_to 'Edit', edit_profile_path
-      .prifilePage_user_introduction
-        #{current_user.introduction}
-  
-  - current_user.articles.each do |article|
-    = link_to article_path(article) do
-      = render 'commons/article', article: article
+.container
+  = render 'commons/profile', user: current_user
