@@ -1,0 +1,8 @@
+.container
+  = render 'commons/tabs'
+  - articles.each do |article|
+    = link_to article_path(article) do
+      = render 'commons/article', article: article
+  = link_to new_article_path do
+    .float_btn
+      %i.fa.fa-plus
