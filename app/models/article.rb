@@ -27,12 +27,4 @@ class Article < ApplicationRecord
   validates :title, format: { with: /\A(?!\@)/ }
   validates :content, presence: true
 
-    def author_name
-    user.display_name
-  end
-
-  def like_count
-    likes.count
-  end
-
 end
