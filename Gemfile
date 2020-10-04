@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'image_processing', '~> 1.2'
 
 gem 'active_decorator'
+gem 'active_model_serializers'
 gem 'annotate'
 gem 'aws-sdk-s3', require: false
 gem 'better_errors'
