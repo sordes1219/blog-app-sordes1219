@@ -26,27 +26,12 @@ class Relationship < ApplicationRecord
   belongs_to :follower, class_name: 'User'
   belongs_to :following, class_name: 'User'
 
-  after_create :send_grid
+  after_create :send_email
 
   private
 
   def send_email
     RelationshipMailer.new_follower(following,follower).deliver_now
-  end
-
-  def send_grid
-    from = SendGrid::Email.new(email: 'test@example.com')
-    to = SendGrid::Email.new(email: 'zaza.yn@gmail.com' )
-    subject = 'Sending with Twilio SendGrid is Fun'
-    content = SendGrid::Content.new(type: 'text/plain', value: 'and easy to do anywhere, even with Ruby')
-    mail = SendGrid::Mail.new(from, subject, to, content)
-
-    sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
-    response = sg.client.mail._('send').post(request_body: mail.to_json)
-    puts response.status_code
-    puts response.body
-    puts response.parsed_body
-    puts response.headers
   end
 
 end
