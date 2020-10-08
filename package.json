@@ -5,7 +5,7 @@
     "@rails/actioncable": "^6.0.0",
     "@rails/actiontext": "^6.0.3-3",
     "@rails/activestorage": "^6.0.0",
-    // "@rails/ujs": "^6.0.3-3",
+    "@rails/ujs": "^6.0.3-3",
     "@rails/webpacker": "4.3.0",
     "axios": "^0.20.0",
     "jquery": "^3.5.1",
