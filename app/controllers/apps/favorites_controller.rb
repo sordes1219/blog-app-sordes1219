@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class FavoritesController < ApplicationController
+class Apps::FavoritesController < Apps::ApplicationController
   def index
     @articles = current_user.favorite_articles
   end
